@@ -1,0 +1,120 @@
+.centered
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a.text-link,
+a.text-link:visited,
+a.text-link:hover,
+a.text-link
+{
+  color: #212529;
+  text-decoration: none;
+}
+
+.icon-button
+{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: #009ddf;
+}
+
+  .icon-button:disabled
+  {
+    cursor: auto;
+    color: lightsteelblue;
+  }
+
+.full-size
+{
+  width: 100%;
+  height: 100%;
+}
+
+
+div.app
+{
+  max-width: 450px;
+  width: 100%;
+  display: inline-block;
+}
+
+div.app-root
+{
+  width: 100%;
+  text-align: center;
+}
+
+tr.activity-row
+{
+  vertical-align: baseline;
+}
+
+table.activities-table
+{
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #dee2e6;
+}
+
+nav.navbar
+{
+  background-color: #009ddf;
+  margin-top: 10px;
+}
+
+ul.navbar-nav
+{
+  display: inline-flex;
+  width: 100%;
+}
+
+div.main-menu
+{
+  text-align: center;
+  width: calc(100% - 250px);
+}
+
+div.separator
+{
+  width: 50px;
+}
+
+a.link-active,
+.link-active a:active,
+.link-active a:hover,
+a.link-active a:visited,
+a:hover
+{
+  color: white !important;
+}
+
+div.current-date input
+{
+  border-bottom-width: 0 !important;
+  border-bottom-color: red !important;
+}
+
+div.current-date hr
+{
+  display: none !important;
+}
+
+
+div.date-switcher
+{
+  background: linear-gradient(#d8d8d8, #ebf5fb);
+  /* lightsteelblue */
+}
+
+button.date-switcher-button
+{
+  width: 40px;
+}
