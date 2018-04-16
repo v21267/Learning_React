@@ -5,6 +5,7 @@ import { ApplicationState } from '../store';
 import * as MetricsDataStore from '../store/MetricsDataHandler';
 import { MetricsDataState } from '../store/MetricsDataHandler';
 import { DateSwitcher } from './DateSwitcher';
+import { ActivityRow } from './ActivityRow';
 
 // At runtime, Redux will merge together...
 export type MetricsDataProps =
@@ -24,14 +25,7 @@ export class Activities extends React.Component<MetricsDataProps, {}>
         <table className='table pt-0 activities-table'>
           <tbody>
             {this.props.data.map(md =>
-              <tr key={md.code} className="activity-row">
-                <td>{md.code}</td>
-                <td>{md.description}</td>
-                <td>{md.type}</td>
-                <td>{md.value}</td>
-                <td>{md.color}</td>
-                <td>{md.date}</td>
-              </tr>
+              <ActivityRow key={md.code} {...this.props} {...md}></ActivityRow>
             )}
           </tbody>
         </table >

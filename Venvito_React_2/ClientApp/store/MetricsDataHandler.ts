@@ -35,9 +35,7 @@ interface SetMetricsDataAction
 interface UpdateMetricsDataAction
 {
   type: 'UPDATE_METRICS_DATA';
-  date: Date;
-  code: string;
-  value: number;
+  md: MetricsData;
 }
 
 
@@ -57,6 +55,11 @@ export const actionCreators = {
   setMetricsData: (data: MetricsData[]): AppThunkAction<KnownAction> => (dispatch, getState) =>
   {
     dispatch({ type: 'SET_METRICS_DATA', data: data });
+  },
+
+  updateMetricsData: (md: MetricsData): AppThunkAction<KnownAction> => (dispatch, getState) =>
+  {
+    dispatch({ type: 'UPDATE_METRICS_DATA', md: md });
   }
 };
 
@@ -76,6 +79,19 @@ export const reducer: Reducer<MetricsDataState> =
         {
           const action = incomingAction as SetMetricsDataAction;
           return { ...state, data: action.data } as MetricsDataState;
+        }
+      case 'UPDATE_METRICS_DATA':
+        {
+          const action = incomingAction as UpdateMetricsDataAction;
+          const updatedData = state.data.map(md =>
+          {
+            if (md.code === action.md.code)
+            {
+              return { ...md, value: action.md.value }
+            }
+            return md;
+          })
+          return { ...state, data: updatedData };
         }
       default:
         // The following line guarantees that every action in the KnownAction union has been covered by a case above

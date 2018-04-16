@@ -1,3 +1,8 @@
+.activities-table td
+{
+  padding: 0 !important;
+}
+
 .centered
 {
   display: flex;
@@ -96,10 +101,11 @@ a:hover
   color: white !important;
 }
 
-div.current-date input
+div.current-date input,
+div.current-date div:first-child
 {
   border-bottom-width: 0 !important;
-  border-bottom-color: red !important;
+  height: 28px !important;
 }
 
 div.current-date hr
@@ -117,6 +123,95 @@ div.date-switcher
 button.date-switcher-button
 {
   width: 40px;
+}
+
+td.activity-badge
+{
+  max-width: 10px;
+  width: 10px;
+  padding: 0 !important;
+}
+
+td.activity-count
+{
+  width: 40px;
+  font-weight: 600;
+  font-size: xx-large;
+  text-align: right;
+  padding: 0.75rem !important;
+}
+
+td.activity-description
+{
+  font-weight: 400;
+  text-align: left;
+  vertical-align: bottom !important;
+  padding-bottom: 18px !important;
+  padding-left: 0 !important;
+}
+
+td.activity-button,
+td.activity-amount-button
+{
+  width: 70px;
+  vertical-align: middle;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: #dee2e6;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #dee2e6;
+  padding: 0;
+}
+
+  td.activity-button button,
+  td.activity-amount-button button
+  {
+    height: 70px;
+  }
+
+td.activity-amount
+{
+  text-align: left;
+}
+
+td.activity-amount
+{
+  padding-top: 0.375rem !important;
+  padding-bottom: 0.375rem !important;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+td.activity-amount-button
+{
+  padding-top: 2px;
+  padding-bottom: 1px;
+}
+
+div.activity-amount-description
+{
+  font-size: small;
+  color: gray;
+  text-transform: uppercase;
+}
+
+div.activity-amount
+{
+  font-weight: 600 !important;
+  font-size: x-large !important;
+}
+
+div.activity-amount input
+{
+  font-weight: 400 !important;
+  font-size: x-large !important;
+}
+
+td.activity-amount-button span
+{
+  font-weight: 600;
+  font-size: large;
 }
 /*!
  * Bootstrap v4.1.0 (https://getbootstrap.com/)

@@ -47,9 +47,11 @@
     "@types/material-ui": "^0.18.1",
     "@types/react-bootstrap": "^0.32.8",
     "axios": "^0.18.0",
+    "font-awesome": "^4.7.0",
     "material-ui": "^0.19.4",
     "poper": "^0.1.1",
     "popper.js": "^1.14.3",
-    "react-axios": "^2.0.0"
+    "react-axios": "^2.0.0",
+    "react-number-format": "^3.3.1"
   }
 }

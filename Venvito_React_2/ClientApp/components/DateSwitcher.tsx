@@ -1,8 +1,6 @@
 ﻿import * as React from 'react';
 import DatePicker from 'material-ui/DatePicker';
-import * as MetricsDataStore from '../store/MetricsDataHandler';
 import { VenvitoService } from '../VenvitoService';
-import { CurrentDateState } from '../store/CurrentDate';
 import { MetricsDataProps } from './Activities';
 
 
@@ -28,8 +26,9 @@ export class DateSwitcher extends React.Component<MetricsDataProps, {}>
   setCurrentDate(newDate: Date)
   {
     this.props.setCurrentDate(newDate);
-    const data = VenvitoService.getMetricsData(newDate).then(
-      data => this.props.setMetricsData(data));
+    const data = VenvitoService.getMetricsData(newDate)
+      .then(data => this.props.setMetricsData(data))
+      .catch(error => console.log(error.response));
   }
 
   shiftDate(delta: number)
@@ -88,7 +87,7 @@ export class DateSwitcher extends React.Component<MetricsDataProps, {}>
             onChange={this.calendarDateChanged}
             formatDate={this.formatCalendarDate}
             maxDate={this.today}
-            inputStyle={ { cursor: "pointer", textAlign: "center", fontSize: "larger"} }
+            inputStyle={{ cursor: "pointer", textAlign: "center", fontSize: "larger", height: "28px"} }
             className="text-link current-date"
           />
       </div >

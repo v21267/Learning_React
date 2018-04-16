@@ -1,5 +1,5 @@
 ﻿import { fetch, addTask } from 'domain-task';
-import axios from 'axios';
+import axios, { AxiosPromise } from 'axios';
 import { MetricsData } from "./MetricsData";
 import * as MetricsDataHandler from './store/MetricsDataHandler';
 
@@ -29,4 +29,12 @@ export class VenvitoService
     const result = response.data as Promise<MetricsData[]>;
     return result;
   }
+
+  static async updateMetricsData(data: MetricsData): Promise<any>
+  {
+    const url: string = '/api/MetricsData/';
+    const response = await axios.post(url, data);
+    return response;
+  }
+
 }
