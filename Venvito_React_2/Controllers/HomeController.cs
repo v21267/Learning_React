@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Venvito_React_2.Controllers
+namespace Venvito_React.Controllers
 {
     public class HomeController : Controller
     {
