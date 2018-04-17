@@ -1,5 +1,5 @@
 import { MetricsDefinition } from './MetricsDefinition';
-import { MetricsChartData } from './metricsChartData';
+import { MetricsChartData } from './MetricsChartData';
 
 export class MetricsChart extends MetricsDefinition
 {

@@ -45,13 +45,17 @@
     "@fortawesome/fontawesome": "^1.1.5",
     "@fortawesome/react-fontawesome": "0.0.18",
     "@types/material-ui": "^0.18.1",
+    "@types/numeral": "0.0.22",
     "@types/react-bootstrap": "^0.32.8",
     "axios": "^0.18.0",
+    "chart.js": "^2.7.2",
     "font-awesome": "^4.7.0",
     "material-ui": "^0.19.4",
+    "numeral": "^2.0.6",
     "poper": "^0.1.1",
     "popper.js": "^1.14.3",
     "react-axios": "^2.0.0",
+    "react-chartjs-2": "^2.7.0",
     "react-number-format": "^3.3.1"
   }
 }

@@ -1,6 +1,7 @@
 ﻿import { fetch, addTask } from 'domain-task';
 import axios, { AxiosPromise } from 'axios';
 import { MetricsData } from "./MetricsData";
+import { MetricsChart } from './MetricsChart';
 import * as MetricsDataHandler from './store/MetricsDataHandler';
 
 export class VenvitoService
@@ -37,4 +38,11 @@ export class VenvitoService
     return response;
   }
 
+  static async getMetricsChart(dateRange: string): Promise<MetricsChart[]>
+  {
+    const url: string = '/api/MetricsChart/' + dateRange;
+    const response = await axios.get(url);
+    const result = response.data as Promise<MetricsChart[]>;
+    return result;
+  }
 }
