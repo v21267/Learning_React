@@ -159,21 +159,19 @@ export class ActivityRow extends React.Component<ActivityRowProps, ActicityRowSt
             </button>
           </td>
           :
-          <td className="activity-button">
-            <button type="button" className="icon-button full-size" onClick={() => this.cancelAmountEditing()} style={cancelButtonStyle} >
-              <span className="fas fa-times fa-lg"></span>
-            </button>
-          </td>
-        }
-
-        {!this.state.inAmountEditing ?
-          (null)
-          :
-          <td className="activity-button">
-            <button type="button" className="icon-button full-size" onClick={() => this.setAmount()} disabled={!this.isValidAmount} style={okButtonStyle} >
-              <span className="fas fa-check fa-lg"></span>
-            </button>
-          </td>
+          [
+            <td className="activity-button">
+              <button type="button" className="icon-button full-size" onClick={() => this.cancelAmountEditing()} style={cancelButtonStyle} >
+                <span className="fas fa-times fa-lg"></span>
+              </button>
+            </td>
+            ,
+            <td className="activity-button">
+              <button type="button" className="icon-button full-size" onClick={() => this.setAmount()} disabled={!this.isValidAmount} style={okButtonStyle} >
+                <span className="fas fa-check fa-lg"></span>
+              </button>
+            </td>
+          ]
         }
       </tr>;
     }

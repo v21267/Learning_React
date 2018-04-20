@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7fff89c6cb99bc276ec3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fdfb738806643d84334f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64543,15 +64543,14 @@ var ActivityRow = (function (_super) {
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "button", className: "icon-button full-size", onClick: function () { return _this.editAmount(); } },
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", null, "EDIT")))
                     :
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { className: "activity-button" },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "button", className: "icon-button full-size", onClick: function () { return _this.cancelAmountEditing(); }, style: cancelButtonStyle },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: "fas fa-times fa-lg" }))),
-                !this.state.inAmountEditing ?
-                    (null)
-                    :
-                        __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { className: "activity-button" },
-                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "button", className: "icon-button full-size", onClick: function () { return _this.setAmount(); }, disabled: !this.isValidAmount, style: okButtonStyle },
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: "fas fa-check fa-lg" }))));
+                        [
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { className: "activity-button" },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "button", className: "icon-button full-size", onClick: function () { return _this.cancelAmountEditing(); }, style: cancelButtonStyle },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: "fas fa-times fa-lg" }))),
+                            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { className: "activity-button" },
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "button", className: "icon-button full-size", onClick: function () { return _this.setAmount(); }, disabled: !this.isValidAmount, style: okButtonStyle },
+                                    __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("span", { className: "fas fa-check fa-lg" })))
+                        ]);
         }
     };
     return ActivityRow;
