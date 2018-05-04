@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fdfb738806643d84334f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "279e9a762f969faea2cc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -64491,7 +64491,15 @@ var ActivityRow = (function (_super) {
         var newAmount = parseInt(newValue);
         this.setState(function (prevState, props) { return ({ amount: newAmount }); });
     };
+    ActivityRow.prototype.handleKeyUp = function (event) {
+        if (event.keyCode == 13)
+            this.setAmount();
+        if (event.keyCode == 27)
+            this.cancelAmountEditing();
+    };
     ActivityRow.prototype.setAmount = function () {
+        if (!this.isValidAmount)
+            return;
         var md = __assign({}, this.props);
         md.value = this.state.amount;
         this.updateMetricsData(md);
@@ -64537,7 +64545,7 @@ var ActivityRow = (function (_super) {
                         :
                             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", { className: "activity-amount" },
                                 "$",
-                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_material_ui_TextField___default.a, { id: "amount", ref: function (input) { _this.amountInput = input; }, type: "number", min: "0", max: "999999999", defaultValue: this.props.value, onChange: function (event) { return _this.handleAmountChange(event.target.value); }, required: true, style: { height: "38px" } }))),
+                                __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_material_ui_TextField___default.a, { id: "amount", ref: function (input) { _this.amountInput = input; }, type: "number", min: "0", max: "999999999", defaultValue: this.props.value, onChange: function (event) { return _this.handleAmountChange(event.target.value); }, onKeyUp: function (event) { return _this.handleKeyUp(event); }, required: true, style: { height: "38px" } }))),
                 !this.state.inAmountEditing ?
                     __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("td", { className: "activity-amount-button", colSpan: 2 },
                         __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("button", { type: "button", className: "icon-button full-size", onClick: function () { return _this.editAmount(); } },

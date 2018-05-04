@@ -68,8 +68,18 @@ export class ActivityRow extends React.Component<ActivityRowProps, ActicityRowSt
     this.setState((prevState, props) => ({ amount: newAmount }));
   }
 
+  handleKeyUp(event: any)
+  {
+    if (event.keyCode == 13)
+      this.setAmount();
+    if (event.keyCode == 27)
+      this.cancelAmountEditing();
+  }
+
   setAmount()
   {
+    if (!this.isValidAmount) return;
+
     const md = { ...this.props } as MetricsData;
     md.value = this.state.amount;
     this.updateMetricsData(md);
@@ -143,6 +153,7 @@ export class ActivityRow extends React.Component<ActivityRowProps, ActicityRowSt
                 min="0" max="999999999"
                 defaultValue={this.props.value}
                 onChange={(event) => this.handleAmountChange(event.target.value)}
+                onKeyUp={(event) => this.handleKeyUp(event) }
                 required
                 style={{ height: "38px" }}
               >
