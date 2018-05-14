@@ -6,6 +6,8 @@ import * as MetricsDataHandler from './store/MetricsDataHandler';
 
 export class VenvitoService
 {
+  static API_HOST: String = 'http://localhost:3000';
+
   static initialDate: Date = new Date();
 
   static addDays(date: Date, delta: number): Date
@@ -25,7 +27,7 @@ export class VenvitoService
   static async getMetricsData(date: Date): Promise<MetricsData[]>
   {
     const d: string = VenvitoService.dateToString(date);
-    const url: string = '/api/MetricsData/' + d;
+    const url: string = VenvitoService.API_HOST + '/api/MetricsData/' + d;
     const response = await axios.get(url);
     const result = response.data as Promise<MetricsData[]>;
     return result;
@@ -33,14 +35,14 @@ export class VenvitoService
 
   static async updateMetricsData(data: MetricsData): Promise<any>
   {
-    const url: string = '/api/MetricsData/';
+    const url: string = VenvitoService.API_HOST + '/api/MetricsData/';
     const response = await axios.post(url, data);
     return response;
   }
 
   static async getMetricsChart(dateRange: string): Promise<MetricsChart[]>
   {
-    const url: string = '/api/MetricsChart/' + dateRange;
+    const url: string = VenvitoService.API_HOST + '/api/MetricsChart/' + dateRange;
     const response = await axios.get(url);
     const result = response.data as Promise<MetricsChart[]>;
     return result;
