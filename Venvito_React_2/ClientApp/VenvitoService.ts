@@ -6,7 +6,9 @@ import * as MetricsDataHandler from './store/MetricsDataHandler';
 
 export class VenvitoService
 {
-  static API_HOST: String = 'http://localhost:3000';
+//  static API_HOST: String = 'http://localhost:3000'; // NodeJS + Mongo
+  static API_HOST: String = 'http://localhost:8000'; // Python + PostgresSQL
+//  static API_HOST: String = ''; // .NET Core
 
   static initialDate: Date = new Date();
 

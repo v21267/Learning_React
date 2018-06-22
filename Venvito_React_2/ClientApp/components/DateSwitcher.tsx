@@ -1,17 +1,29 @@
 ﻿import * as React from 'react';
 import DatePicker from 'material-ui/DatePicker';
 import { VenvitoService } from '../VenvitoService';
-import { MetricsDataProps } from './Activities';
+import * as MetricsDataStore from '../store/MetricsDataHandler';
+import { MetricsDataState } from '../store/MetricsDataHandler';
 
+interface DateSwitcherState
+{
+  currentDate: number;
+}
 
-export class DateSwitcher extends React.Component<MetricsDataProps, {}>
+// At runtime, Redux will merge together...
+export type DateSwitcherProps =
+  DateSwitcherState                                         // ... state we've requested from the Redux store
+  & typeof MetricsDataStore.setCurrentDateActionCreator     // ... plus action creators we've requested
+  & typeof MetricsDataStore.setMetricsDataActionCreator     // ... plus action creators we've requested
+  & React.Props<{}>;
+
+export class DateSwitcher extends React.Component<DateSwitcherProps, {}>
 {
   componentWillMount()
   {
     // This method runs when the component is first added to the page
   }
 
-  componentWillReceiveProps(nextProps: MetricsDataProps)
+  componentWillReceiveProps(nextProps: DateSwitcherProps)
   {
     // This method runs when incoming props (e.g., route params) change
   }

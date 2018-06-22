@@ -63,6 +63,18 @@ export const actionCreators = {
   }
 };
 
+export const setCurrentDateActionCreator = {
+  setCurrentDate: actionCreators.setCurrentDate,
+};
+
+export const setMetricsDataActionCreator = {
+  setMetricsData: actionCreators.setMetricsData,
+};
+
+export const updateMetricsDataActionCreator = {
+  updateMetricsData: actionCreators.updateMetricsData,
+};
+
 // ----------------
 // REDUCER - For a given state and action, returns the new state. To support time travel, this must not mutate the old state.
 export const reducer: Reducer<MetricsDataState> =

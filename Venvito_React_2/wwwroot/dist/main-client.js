@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3c9243b3ac769f28675c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5a26184dbaaad67e7b8f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -7803,7 +7803,9 @@ var VenvitoService = (function () {
             });
         });
     };
-    VenvitoService.API_HOST = 'http://localhost:3000';
+    //  static API_HOST: String = 'http://localhost:3000'; // NodeJS + Mongo
+    VenvitoService.API_HOST = 'http://localhost:8000'; // Python + PostgresSQL
+    //  static API_HOST: String = ''; // .NET Core
     VenvitoService.initialDate = new Date();
     return VenvitoService;
 }());
@@ -26886,6 +26888,9 @@ if (!module.hot || process.env.NODE_ENV === 'production') {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process, module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return actionCreators; });
+/* unused harmony export setCurrentDateActionCreator */
+/* unused harmony export setMetricsDataActionCreator */
+/* unused harmony export updateMetricsDataActionCreator */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return reducer; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VenvitoService__ = __webpack_require__(66);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
@@ -26914,6 +26919,15 @@ var actionCreators = {
     updateMetricsData: function (md) { return function (dispatch, getState) {
         dispatch({ type: 'UPDATE_METRICS_DATA', md: md });
     }; }
+};
+var setCurrentDateActionCreator = {
+    setCurrentDate: actionCreators.setCurrentDate,
+};
+var setMetricsDataActionCreator = {
+    setMetricsData: actionCreators.setMetricsData,
+};
+var updateMetricsDataActionCreator = {
+    updateMetricsData: actionCreators.updateMetricsData,
 };
 // ----------------
 // REDUCER - For a given state and action, returns the new state. To support time travel, this must not mutate the old state.
@@ -64441,10 +64455,10 @@ var Activities = (function (_super) {
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("em", null, "Loading...")) :
             __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("table", { className: 'table pt-0 activities-table' },
                 __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("tbody", null, this.props.data.map(function (md) {
-                    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__ActivityRow__["a" /* ActivityRow */], __assign({ key: md.code }, _this.props, md));
+                    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_4__ActivityRow__["a" /* ActivityRow */], __assign({ key: md.code }, md, { updateMetricsData: _this.props.updateMetricsData }));
                 }))));
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", null,
-            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__DateSwitcher__["a" /* DateSwitcher */], __assign({}, this.props)),
+            __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__DateSwitcher__["a" /* DateSwitcher */], { currentDate: this.props.currentDate, setCurrentDate: this.props.setCurrentDate, setMetricsData: this.props.setMetricsData }),
             body);
     };
     Activities.mapStateToProps = function (state) {

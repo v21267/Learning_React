@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { ApplicationState } from '../store';
 import * as MetricsDataStore from '../store/MetricsDataHandler';
 import { MetricsDataState } from '../store/MetricsDataHandler';
+import { MetricsData } from '../MetricsData';
 import { DateSwitcher } from './DateSwitcher';
 import { ActivityRow } from './ActivityRow';
 
 // At runtime, Redux will merge together...
 export type MetricsDataProps =
-  MetricsDataStore.MetricsDataState         // ... state we've requested from the Redux store
+  MetricsDataState                          // ... state we've requested from the Redux store
   & typeof MetricsDataStore.actionCreators  // ... plus action creators we've requested
   & RouteComponentProps<{}>;
 
@@ -25,14 +26,17 @@ export class Activities extends React.Component<MetricsDataProps, {}>
         <table className='table pt-0 activities-table'>
           <tbody>
             {this.props.data.map(md =>
-              <ActivityRow key={md.code} {...this.props} {...md}></ActivityRow>
+              <ActivityRow key={md.code} {...md} updateMetricsData={this.props.updateMetricsData}></ActivityRow>
             )}
           </tbody>
         </table >
       );
 
     return <div>
-      <DateSwitcher {...this.props} ></DateSwitcher>
+      <DateSwitcher currentDate={this.props.currentDate}
+                    setCurrentDate={this.props.setCurrentDate}
+                    setMetricsData={this.props.setMetricsData}
+      />
       {body}
     </div>;
   }

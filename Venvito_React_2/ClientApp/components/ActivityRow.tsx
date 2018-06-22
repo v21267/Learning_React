@@ -7,8 +7,8 @@ import { MetricsData } from '../MetricsData';
 
 // At runtime, Redux will merge together...
 export type ActivityRowProps =
-  MetricsData                               // ... state we've requested from the Redux store
-  & typeof MetricsDataStore.actionCreators  // ... plus action creators we've requested
+  MetricsData                                               // ... state we've requested from the Redux store
+  & typeof MetricsDataStore.updateMetricsDataActionCreator  // ... plus action creators we've requested
   & React.Props<{}>;
 
 interface ActicityRowState { inAmountEditing: boolean; amount: number }
