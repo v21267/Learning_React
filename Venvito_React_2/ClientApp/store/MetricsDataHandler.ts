@@ -75,6 +75,22 @@ export const updateMetricsDataActionCreator = {
   updateMetricsData: actionCreators.updateMetricsData,
 };
 
+export interface SetCurrentDateActionCreatorType
+{
+  setCurrentDate?: typeof actionCreators.setCurrentDate
+}
+
+export interface SetMetricsDataActionCreatorType
+{
+  setMetricsData?: typeof actionCreators.setMetricsData,
+};
+
+
+export interface UpdateMetricsDataActionCreatorType
+{
+  updateMetricsData?: typeof actionCreators.updateMetricsData
+}
+
 // ----------------
 // REDUCER - For a given state and action, returns the new state. To support time travel, this must not mutate the old state.
 export const reducer: Reducer<MetricsDataState> =

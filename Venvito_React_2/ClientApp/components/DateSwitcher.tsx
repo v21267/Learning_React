@@ -1,20 +1,22 @@
 ﻿import * as React from 'react';
 import DatePicker from 'material-ui/DatePicker';
+import { connect } from 'react-redux';
 import { VenvitoService } from '../VenvitoService';
 import * as MetricsDataStore from '../store/MetricsDataHandler';
 import { MetricsDataState } from '../store/MetricsDataHandler';
+import { ApplicationState } from '../store';
 
 interface DateSwitcherState
 {
-  currentDate: number;
+  currentDate?: number;
 }
 
 // At runtime, Redux will merge together...
 export type DateSwitcherProps =
-  DateSwitcherState                                         // ... state we've requested from the Redux store
-  & typeof MetricsDataStore.setCurrentDateActionCreator     // ... plus action creators we've requested
-  & typeof MetricsDataStore.setMetricsDataActionCreator     // ... plus action creators we've requested
-  & React.Props<{}>;
+  (DateSwitcherState                                         // ... state we've requested from the Redux store
+    & MetricsDataStore.SetCurrentDateActionCreatorType     // ... plus action creators we've requested
+    & MetricsDataStore.SetMetricsDataActionCreatorType     // ... plus action creators we've requested
+    & React.Props<{}>);
 
 export class DateSwitcher extends React.Component<DateSwitcherProps, {}>
 {
@@ -37,9 +39,9 @@ export class DateSwitcher extends React.Component<DateSwitcherProps, {}>
 
   setCurrentDate(newDate: Date)
   {
-    this.props.setCurrentDate(newDate);
+    this.props.setCurrentDate!(newDate);
     const data = VenvitoService.getMetricsData(newDate)
-      .then(data => this.props.setMetricsData(data))
+      .then(data => this.props.setMetricsData!(data))
       .catch(error => console.log(error.response));
   }
 
@@ -51,7 +53,7 @@ export class DateSwitcher extends React.Component<DateSwitcherProps, {}>
 
   get currentDate(): Date
   {
-    return new Date(this.props.currentDate);
+    return new Date(this.props.currentDate!);
   }
 
   get isToday(): boolean
@@ -116,6 +118,16 @@ export class DateSwitcher extends React.Component<DateSwitcherProps, {}>
     </div >
       ;
   }
+
+
+  static mapStateToProps = (state: ApplicationState) =>  
+  {
+    return { currentDate: state.metricsData.currentDate } as DateSwitcherProps;
+  }
 }
 
-export default DateSwitcher;
+// Wire up the React component to the Redux store
+export default connect(
+  DateSwitcher.mapStateToProps,        // Selects which state properties are merged into the component's props
+  MetricsDataStore.actionCreators    // Selects which action creators are merged into the component's props
+)(DateSwitcher) as typeof DateSwitcher;

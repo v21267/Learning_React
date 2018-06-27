@@ -1,14 +1,15 @@
 ﻿import * as React from 'react';
 import TextField from 'material-ui/TextField';
 import * as NumberFormat from 'react-number-format';
+import { connect } from 'react-redux';
 import * as MetricsDataStore from '../store/MetricsDataHandler';
 import { VenvitoService } from '../VenvitoService';
 import { MetricsData } from '../MetricsData';
 
 // At runtime, Redux will merge together...
 export type ActivityRowProps =
-  MetricsData                                               // ... state we've requested from the Redux store
-  & typeof MetricsDataStore.updateMetricsDataActionCreator  // ... plus action creators we've requested
+  MetricsData                                           // ... state we've requested from the Redux store
+  & MetricsDataStore.UpdateMetricsDataActionCreatorType // ... plus action creators we've requested
   & React.Props<{}>;
 
 interface ActicityRowState { inAmountEditing: boolean; amount: number }
@@ -43,7 +44,7 @@ export class ActivityRow extends React.Component<ActivityRowProps, ActicityRowSt
 
   updateMetricsData(md: MetricsData)
   {
-    this.props.updateMetricsData(md);
+    this.props.updateMetricsData!(md);
     VenvitoService.updateMetricsData(md)
       .catch(error => console.log(error.response));
   }
@@ -189,4 +190,8 @@ export class ActivityRow extends React.Component<ActivityRowProps, ActicityRowSt
   }
 }
 
-export default ActivityRow;
+// Wire up the React component to the Redux store
+export default connect(
+  null,                                              // Selects which state properties are merged into the component's props
+  MetricsDataStore.updateMetricsDataActionCreator    // Selects which action creators are merged into the component's props
+)(ActivityRow) as typeof ActivityRow;
